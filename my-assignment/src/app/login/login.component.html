@@ -1,0 +1,27 @@
+<div class="container">
+  <h2>LOGIN</h2>
+  <div class="col-md-6">
+    <h3>CLIENT</h3>
+  <form #loginForm="ngForm" novalidate>
+    <div class="form-group">
+      <label for="id">CLIENT ID:</label>
+      <input type="text" class="form-control" id="id" placeholder="Enter Client Id" name="id" [(ngModel)]>
+    </div>
+    <div class="form-group">
+      <label for="pwd">PASSWORD:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd" [(ngModel)]>
+    </div>
+    <div class="form-group">
+      <label for="dob">DOB(DD_MM_YYYY):</label>
+      <input type="date" class="form-control" id="dob" placeholder="Enter date of birth" name="dob" [(ngModel)]>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button><br><br>
+  </form>
+  </div>
+  <div class="col-md-6">
+    <h3>Guest</h3>
+    <label>Facebook</label><br>
+    <label>Google</label>
+  </div>
+  <pre>{{ loginForm.value | json }}</pre>
+</div>
