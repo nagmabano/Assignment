@@ -28,8 +28,8 @@
       <div class="form-group">
         <label for="pan">PAN NUMBER:</label>
         <input type="text" class="form-control" id="pan" placeholder="Enter pan number" 
-        name="pan" [ngModel]="unlockmodel.pannumber | uppercase" (ngModelChange)="unlockmodel.pannumber=$event" 
-        equired #pan="ngModel" maxlength="10" pattern="^[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}"
+        name="pan" [ngModel]="unlockmodel.pannumber | uppercase" (ngModelChange)="unlockmodel.pannumber=$event"
+        required #pan="ngModel" maxlength="10" pattern="^[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}"
         [ngClass]="{
           'has-danger': pan.invalid && (pan.dirty || pan.touched),
           'has-success': pan.valid && (pan.dirty || pan.touched)

@@ -10,9 +10,8 @@ export class ChangepwdComponent implements OnInit {
 
   changemodel: Change = new Change();
   @ViewChild('changeForm') form:any;
-  @ViewChild('newpwd') newpwd;
-  @ViewChild('cnfpwd') cnfpwd;
-  message:string;
+
+  type = "password";
   show: boolean;
 
   constructor() { 
@@ -29,13 +28,8 @@ export class ChangepwdComponent implements OnInit {
     }
   }
 
-  onCheck(){
-    if(this.newpwd !== this.cnfpwd){
-      this.show = true;
-      this.message = "The new password and confirm password do not match!"
-      return this.show;
-    }
-
-  }
+  viewPassword(){
+    this.show = !this.show;
+ }
 
 }

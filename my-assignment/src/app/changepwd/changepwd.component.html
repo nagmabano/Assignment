@@ -17,13 +17,14 @@
       </div>
       <div class="form-group">
         <label for="pwd">EXISTING PASSWORD:</label>
-        <input type="password" class="form-control" id="pwd" placeholder="Enter existing password"
+        <input [type]="show ? 'text' : 'password'" class="form-control" id="pwd" placeholder="Enter existing password"
          name="pwd" [(ngModel)]="changemodel.password" required #pwd="ngModel"
          [ngClass]="{
           'has-danger': pwd.invalid && (pwd.dirty || pwd.touched),
           'has-success': pwd.valid && (pwd.dirty || pwd.touched)
         }"
-         > 
+         >
+         <input type="checkbox" (click)="viewPassword()">Show Password  
       </div>
       <div class="form-group">
         <label for="newpwd">NEW PASSWORD:</label>
@@ -45,7 +46,7 @@
           }"
           >
         </div>
-        <p ngShow=onCheck()>{{ message }}</p>
+        <p ng-show=onCheck()>{{ message }}</p>
       <button type="submit" class="btn btn-primary" [disabled]="changeForm.invalid">Submit</button><br><br>
     </form>
     </div>

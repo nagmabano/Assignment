@@ -11,6 +11,8 @@ export class UnlockAccountComponent implements OnInit {
   unlockmodel:Unlock = new Unlock();
   @ViewChild('unlockForm') form: any;
 
+  
+
   constructor() { }
 
   ngOnInit() {
@@ -22,5 +24,4 @@ export class UnlockAccountComponent implements OnInit {
       this.form.reset();
     }
   }
-
 }
