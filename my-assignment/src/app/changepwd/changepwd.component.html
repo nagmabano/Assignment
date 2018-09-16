@@ -5,7 +5,8 @@
       <div class="form-group">
         <label for="id">CLIENT ID:</label>
         <input type="text" class="form-control" id="id" placeholder="Enter Client Id" 
-        name="id" [(ngModel)]="changemodel.clientId" required minlength="5" maxlength="7"
+        name="id" [ngModel]="changemodel.clientId | uppercase" (ngModelChange)="changemodel.clientId=$event"
+         required minlength="5" maxlength="7" pattern="^[A-Za-z]{2}[0-9]{3,5}"
           
           #id="ngModel"
          [ngClass]="{
@@ -44,8 +45,9 @@
           }"
           >
         </div>
+        <p ngShow=onCheck()>{{ message }}</p>
       <button type="submit" class="btn btn-primary" [disabled]="changeForm.invalid">Submit</button><br><br>
     </form>
     </div>
-    <pre>{{ changeForm.value | json }}</pre>
+    <!-- <pre>{{ changeForm.value | json }}</pre> -->
   </div>

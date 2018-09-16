@@ -5,7 +5,8 @@
       <div class="form-group">
         <label for="id">CLIENT ID:</label>
         <input type="text" class="form-control" id="id" placeholder="Enter Client Id" 
-        name="id" [(ngModel)]="unlockmodel.clientId" required minlength="5" maxlength="7"
+        name="id" [ngModel]="unlockmodel.clientId | uppercase" (ngModelChange)="unlockmodel.clientId=$event"
+        required minlength="5" maxlength="7" pattern="^[A-Za-z]{2}[0-9]{3,5}"
           
           #id="ngModel"
          [ngClass]="{
@@ -27,7 +28,8 @@
       <div class="form-group">
         <label for="pan">PAN NUMBER:</label>
         <input type="text" class="form-control" id="pan" placeholder="Enter pan number" 
-        name="pan" [(ngModel)]="unlockmodel.pan" required #pan="ngModel"
+        name="pan" [ngModel]="unlockmodel.pannumber | uppercase" (ngModelChange)="unlockmodel.pannumber=$event" 
+        equired #pan="ngModel" maxlength="10" pattern="^[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}"
         [ngClass]="{
           'has-danger': pan.invalid && (pan.dirty || pan.touched),
           'has-success': pan.valid && (pan.dirty || pan.touched)
@@ -37,5 +39,5 @@
       <button type="submit" class="btn btn-primary" [disabled]="unlockForm.invalid">Submit</button><br><br>
     </form>
     </div>
-    <pre>{{ unlockForm.value | json }}</pre>
+    <!-- <pre>{{ unlockForm.value | json }}</pre> -->
   </div>

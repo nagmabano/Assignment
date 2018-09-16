@@ -11,7 +11,12 @@ export class LoginComponent implements OnInit {
   @ViewChild('loginForm') form: any;
 
 
-  constructor() { }
+  type = "password";
+  show: boolean;
+
+  constructor() {
+    this.show = false;
+   }
 
   ngOnInit() {
   }
@@ -23,4 +28,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
+  viewPassword(){
+    this.show = !this.show;
+ }
 }

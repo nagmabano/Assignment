@@ -10,8 +10,14 @@ export class ChangepwdComponent implements OnInit {
 
   changemodel: Change = new Change();
   @ViewChild('changeForm') form:any;
+  @ViewChild('newpwd') newpwd;
+  @ViewChild('cnfpwd') cnfpwd;
+  message:string;
+  show: boolean;
 
-  constructor() { }
+  constructor() { 
+    this.show = false;
+  }
 
   ngOnInit() {
   }
@@ -21,6 +27,15 @@ export class ChangepwdComponent implements OnInit {
       console.log("Form Submitted!!!");
       this.form.reset();
     }
+  }
+
+  onCheck(){
+    if(this.newpwd !== this.cnfpwd){
+      this.show = true;
+      this.message = "The new password and confirm password do not match!"
+      return this.show;
+    }
+
   }
 
 }

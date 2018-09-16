@@ -6,8 +6,8 @@
     <div class="form-group">
       <label for="id">CLIENT ID:</label>
       <input type="text" class="form-control" id="id" placeholder="Enter Client Id" 
-      name="id" [(ngModel)]="loginmodel.clientId" required minlength="5" maxlength="7"
-        
+      name="id" [ngModel]="loginmodel.clientId | uppercase" (ngModelChange)="loginmodel.clientId=$event"
+        required minlength="5" maxlength="7" pattern="^[A-Za-z]{2}[0-9]{3,5}"
         #id="ngModel"
        [ngClass]="{
         'has-danger': id.invalid && (id.dirty || id.touched),
@@ -17,14 +17,15 @@
     </div>
     <div class="form-group">
       <label for="pwd">PASSWORD:</label>
-      <input type="password" class="form-control" id="pwd" placeholder="Enter password" 
+      <input [type]="show ? 'text' : 'password'" class="form-control" id="pwd" placeholder="Enter password" 
       name="pwd" [(ngModel)]="loginmodel.password" required minlength="6" #pwd="ngModel"
       [ngClass]="{
         'has-danger': pwd.invalid && (pwd.dirty || pwd.touched),
         'has-success': pwd.valid && (pwd.dirty || pwd.touched)
       }"
-      >
+      ><input type="checkbox" (click)="viewPassword()">Show Password 
     </div>
+    
     <div class="form-group" [ngClass]="{
       'has-danger': dob.invalid && (dob.dirty || dob.touched),
       'has-success': dob.valid && (dob.dirty || dob.touched)
@@ -41,5 +42,5 @@
     <label>Facebook</label><br>
     <label>Google</label>
   </div>
-  <pre>{{ loginForm.value | json }}</pre>
+  <!-- <pre>{{ loginForm.value | json }}</pre> -->
 </div>
