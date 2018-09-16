@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Forget } from './forget.model';
 
 @Component({
   selector: 'app-forgotpwd',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ForgotpwdComponent implements OnInit {
 
+  forgotmodel: Forget = new Forget();
+  @ViewChild('forgetForm') form: any;
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSubmit(){
+    if(this.form.valid){
+      console.log("form submitted!!!")
+      this.form.reset();
+    }
   }
 
 }

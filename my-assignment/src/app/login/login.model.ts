@@ -1,7 +1,9 @@
-class Login{
+export class Login{
     constructor(
         public clientId = "",
-        public pwd = "",
-        public dob = 
-    ){}
+        public password = "",
+        public dob = ""
+    ){
+
+    }
 }

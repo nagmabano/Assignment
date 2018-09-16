@@ -1,24 +1,51 @@
 <div class="container">
     <h2>CHANGE PASSWORD</h2>
     <div class="col-md-6">
-    <form action="/action_page.php">
+    <form #changeForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
       <div class="form-group">
-        <label for="email">CLIENT ID:</label>
-        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+        <label for="id">CLIENT ID:</label>
+        <input type="text" class="form-control" id="id" placeholder="Enter Client Id" 
+        name="id" [(ngModel)]="changemodel.clientId" required minlength="5" maxlength="7"
+          
+          #id="ngModel"
+         [ngClass]="{
+          'has-danger': id.invalid && (id.dirty || id.touched),
+          'has-success': id.valid && (id.dirty || id.touched)
+        }"
+         >
       </div>
       <div class="form-group">
         <label for="pwd">EXISTING PASSWORD:</label>
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+        <input type="password" class="form-control" id="pwd" placeholder="Enter existing password"
+         name="pwd" [(ngModel)]="changemodel.password" required #pwd="ngModel"
+         [ngClass]="{
+          'has-danger': pwd.invalid && (pwd.dirty || pwd.touched),
+          'has-success': pwd.valid && (pwd.dirty || pwd.touched)
+        }"
+         > 
       </div>
       <div class="form-group">
-        <label for="pwd">NEW PASSWORD:</label>
-        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+        <label for="newpwd">NEW PASSWORD:</label>
+        <input type="password" class="form-control" id="newpwd" placeholder="Enter new password" 
+        name="newpwd" [(ngModel)]="changemodel.newPassword" required #newpwd="ngModel"
+        [ngClass]="{
+          'has-danger': newpwd.invalid && (newpwd.dirty || newpwd.touched),
+          'has-success': newpwd.valid && (newpwd.dirty || newpwd.touched)
+        }"
+        >
       </div>
       <div class="form-group">
-          <label for="pwd">CONFIRM PASSWORD:</label>
-          <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pwd">
+          <label for="cnfpwd">CONFIRM PASSWORD:</label>
+          <input type="password" class="form-control" id="cnfpwd" placeholder="Enter new password again" 
+          name="cnfpwd" [(ngModel)]="changemodel.confirmPassword" required #cnfpwd="ngModel"
+          [ngClass]="{
+            'has-danger': cnfpwd.invalid && (newpwd.dirty || cnfpwd.touched),
+            'has-success': cnfpwd.valid && (newpwd.dirty || cnfpwd.touched)
+          }"
+          >
         </div>
-      <button type="submit" class="btn btn-primary">Submit</button><br><br>
+      <button type="submit" class="btn btn-primary" [disabled]="changeForm.invalid">Submit</button><br><br>
     </form>
     </div>
+    <pre>{{ changeForm.value | json }}</pre>
   </div>
